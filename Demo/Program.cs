@@ -1,19 +1,31 @@
-﻿// <copyright file="Program.cs" company="Васильева М.А.">
-// Copyright (c) Васильева М.А.. All rights reserved.
+﻿// <copyright file="Program.cs" company="Земсков Н.А и Моисеенко М.А">
+// Copyright (c) Земсков Н.А и Моисеенко М.А. All rights reserved.
 // </copyright>
+
+using DataAccess;
+using Domain;
+using System;
 
 namespace Demo
 {
-    using System;
-
-    /// <summary>
-    /// Точка входа в программу.
-    /// </summary>
-    internal static class Program
+    class Program
     {
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            using (var context = new ApplicationDbContext())
+            {
+                // Создаём нового клиента
+                var customer = new Customer("Иван Иванов", "ivanov@example.com");
+
+                // Добавляем клиента в базу
+                context.Customers.Add(customer);
+
+                // Сохраняем изменения
+                context.SaveChanges();
+
+                Console.WriteLine($"Клиент добавлен с ID: {customer.Id}");
+            }
         }
     }
+
 }

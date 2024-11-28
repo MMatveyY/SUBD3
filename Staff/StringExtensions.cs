@@ -1,4 +1,8 @@
-﻿namespace Staff
+﻿// <copyright file="StringExtensions.cs" company="Земсков Н.А и Моисеенко М.А">
+// Copyright (c) Земсков Н.А и Моисеенко М.А. All rights reserved.
+// </copyright>
+
+namespace Staff
 {
     public static class StringExtensions
     {
